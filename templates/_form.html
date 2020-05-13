@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}有盗翻译{% endblock %}
+
+{% block content %}
+{% if message %}
+<div class="card bg-warning text-white">
+    <div class="card-body">{{message}}</div>
+    {% if t %}
+    <a class="nav-link text-muted" href="/login/">登录</a>
+    {% endif%}
+</div>
+<br>
+{% endif%}
+<br><br>
+
+<div class="container">
+    <form action="{% url 'english:get_keyword' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="q" id="inputEmail" class="form-control" placeholder=". ." required autofocus>
+        <br>
+        <button class="btn btn-info btn-lg col-sm-1 " type="submit">翻译</button>
+    </form>
+</div>
+<div class=" text-center">
+    {% for i in result.test %}
+    <a href="{% url 'english:write_word' result.src %}">
+        <button class="btn btn-outline-info" type="submit">写入</button>
+    </a>
+    {% endfor %}
+    <a href="{% url 'english:show_word' %}">
+        <button class="btn btn-outline-success" type="submit">进入单词本</button>
+    </a>
+    <p>汉: {{ result.tgt }}</p>
+    <p>英: {{ result.src }}</p>
+    {% for i in result.entries %}
+    {{ i }}<br>
+    {% endfor %}
+</div>
+{% endblock %}

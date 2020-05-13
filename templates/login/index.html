@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}动态{% endblock %}
+
+{% block content %}
+{% if request.session.is_login %}
+<h5 style="text-indent:2em;">你好,{{ request.session.user_name }}！欢迎回来！</h5>
+{% else %}
+<p style="text-indent:2em;">你尚未登录，只能进行翻译,快点去登录吧,可以查看大家的单词本.</p>
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link text-primary" href="/login/">登录</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-primary" href="/register/">注册</a>
+    </li>
+</ul>
+
+{% endif %}
+<hr>
+
+<div class="container">
+    <p style="text-indent:1em;">今日用户新增单词数量</p>
+    {% for i in user_new_add_word %}
+    <p class="text-muted"> {{i.user}} Add {{i.amount}} word</p>
+    {% endfor%}
+</div>
+<hr>
+
+{% if request.session.is_login %}
+<div class="container">
+    {% if request.session.message %}
+    <p style="text-indent:2em;" class="bg-warning text-white">{{request.session.message}}</p>
+    {% endif %}
+    <p style="text-indent:1em;">查看大家的单词本</p>
+    {% for i in user_list %}
+    <p><a class="text-info" href="{% url 'english:show_user_word' i %}">&nbsp; {{ i }}:单词本</a></p>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

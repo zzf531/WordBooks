@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}单词本{% endblock %}
+
+{% block css %}
+<link href="{% static 'bootstrap/css/_show.css' %}" rel="stylesheet">
+<link href="{% static 'bootstrap/css/signin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a class="text-info" href="{% url 'english:get_keyword' %}">返回有盗翻译</a>
+    <hr>
+    {% for a in records.object_list %}
+    <p>{{a.num}}. &nbsp;&nbsp;汉 :&nbsp; {{ a.tgt }} &nbsp; 英: &nbsp; {{a.src}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {% if delete %}
+        <a class="text-danger" href="{% url 'english:del_word' a.src   %}">删除</a>
+        {% endif %}
+
+        {% if add %}
+        <a class="text-primary" href="{% url 'english:add_word' a.src %}">添加</a>
+        {% endif %}
+    </p>
+    {% for i in a.entries %}
+    <p>{{ i }}</p>
+    {% endfor %}
+    <p class="small">{{a.date}}</p>
+    <hr>
+    {% endfor %}
+</div>
+
+
+<div class="pageturn">
+    <ul class="pagelist">
+        {% if records.has_previous %}
+        <li class="long"><a href="?{{ records.previous_page_number.querystring }}">上一页</a></li>
+        {% endif %}
+
+        {% for page in records.pages %}
+        {% if page %}
+        {% ifequal page records.number %}
+        <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+        {% else %}
+        <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+        {% endifequal %}
+        {% else %}
+        <li class=""><a href="">...</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if records.has_next %}
+        <li class="long"><a href="?{{ records.next_page_number.querystring }}">下一页</a></li>
+        {% endif %}
+
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}小学单词汇总{% endblock %}
+
+{% block css %}
+    <link href="{% static 'bootstrap/css/_show.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/signin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container"><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '1on' %}">一年级英语上册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '1up' %}">一年级英语下册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '2on' %}">二年级英语上册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '2up' %}">二年级英语下册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '3on' %}">三年级英语上册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '3up' %}">三年级英语下册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '4on' %}">四年级英语上册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '4up' %}">四年级英语下册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '5on' %}">五年级英语上册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '5up' %}">五年级英语下册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '6on' %}">六年级英语上册单词汇总（人教新起点版）</a><br><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '6up' %}">六年级英语下册单词汇总（人教新起点版）</a><br><br>
+</div>
+{% endblock %}
