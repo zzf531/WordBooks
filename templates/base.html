@@ -1,0 +1,53 @@
+{% load static %}
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}base{% endblock %}</title>
+    <link href="{% static 'favicon.ico' %}" rel="shortcut icon">
+    <link href="{% static 'bootstrap/css/signin.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% block css %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="{% url 'english:get_keyword' %}">翻译</a>
+    <a class="nav-link text-muted strong" href="/index/">动态</a>
+    <a class="nav-link text-muted strong" href="/example/">広場 </a>
+    <a class="nav-link text-muted strong" href="{% url 'english:show_word' %}">单词本</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            {% if request.session.is_login %}
+            <a class="nav-link" href="#">当前在线：{{ request.session.user_name }}</a>
+            <a class="nav-link" href="{% url 'english:show_word' %}">单词本</a>
+            <a class="nav-link" href="/logout/">退出登录</a>
+
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'english:show_word' %}">单词本</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login/">登录</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/register/">注册</a>
+            </li>
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

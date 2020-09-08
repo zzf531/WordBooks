@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}広場{% endblock %}
+
+{% block css %}
+<link href="{% static 'bootstrap/css/_show.css' %}" rel="stylesheet">
+<link href="{% static 'bootstrap/css/signin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <a class="text-info" href="/xiaoxue">人教新起点版小学英语单词汇总</a><br><br>
+    <a class="text-info" href="/chuzhong">人教版本初中英语单词汇总</a><br><br>
+    <a class="text-info" href="/gaozhong">人教版本高中英语单词汇总</a><br><br>
+    <a class="text-info" href="">英语四级单词</a><br><br>
+    <a class="text-info" href="">英语六级单词</a><br><br>
+
+</div>
+</div>
+{% endblock %}

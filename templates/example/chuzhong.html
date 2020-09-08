@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}初中单词汇总{% endblock %}
+
+{% block css %}
+    <link href="{% static 'bootstrap/css/_show.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/signin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container"><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '7on' %}">七年级英语上册单词汇总</a><br><br>
+    <a class="text-muted" href="https://www.voorp.com/a/七年级下册英语单词人教版">七年级英语下册单词汇总</a><br><br>
+</div>
+{% endblock %}

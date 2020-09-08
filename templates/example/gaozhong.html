@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}高中单词汇总{% endblock %}
+
+{% block css %}
+    <link href="{% static 'bootstrap/css/_show.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/signin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container"><br>
+    <a class="text-muted" href="{% url 'english:show_case_word' '1on' %}">一年级英语上册单词汇总（人教新起点版）</a><br><br>
+</div>
+{% endblock %}
