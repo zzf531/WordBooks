@@ -20,10 +20,11 @@ def paginator(request, path, objects):
         i['num'] = number
         number -= 1
     p = Paginator(objects, 30, request=request)
+    p = Paginator(objects, 20, request=request)
     records = p.page(page)
     return records
 
 
 Today_Time = time.strftime("%Y-%m-%d", time.localtime())
-__versions = 10
+__versions = '测试提交'
 
